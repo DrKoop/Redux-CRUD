@@ -6,6 +6,13 @@ import {
     COMENZAR_DESCARGA_PRODUCTOS,
     DESCARGA_PRODUCTOS_EXITO,
     DESCARGA_PRODUCTOS_ERROR,
+    OBTENER_PRODUCTO_ELIMINAR,
+    PRODUCTO_ELIMINADO_EXITO,
+    PRODUCTO_ELIMINADO_ERROR,
+    OBTENER_PRODUCTO_EDITAR,
+    COMENZAR_EDICION_PRODUCTO,
+    PRODUCTO_EDITADO_EXITO,
+    PRODUCTO_EDITADO_ERROR
 } from '../types';
 
 import clienteAxios from '../config/axios';
@@ -101,4 +108,74 @@ const descagaProductosExitosa = prodcutos => ({
 const descagarProductosError = () => ({
     type : DESCARGA_PRODUCTOS_ERROR,
     payload : true
+})
+
+//Selecciona y elimina producto
+
+export function borrarProductoAction(id) {
+    return async ( dispatch ) => {
+
+        dispatch( obtenerProductoEliminar(id) );
+        
+        try {
+            await axios.delete(`http://localhost:4000/productos/${id}`);
+            dispatch( eliminarProductoExito() );
+            //Si , se elimina,mostramos alerta
+            Swal.fire(
+                'Eliminado!',
+                'El producto se ha eliminado correctamente.',
+                'success'
+              )
+        } catch (error) {
+            console.log(error);
+            dispatch( eliminarProductoError() )
+        }
+    }
+}
+
+const obtenerProductoEliminar  = id => ({
+    type : OBTENER_PRODUCTO_ELIMINAR,
+    payload : id
+})
+
+const eliminarProductoExito = () => ({
+    type : PRODUCTO_ELIMINADO_EXITO
+})
+
+const eliminarProductoError = () => ({
+    type : PRODUCTO_ELIMINADO_ERROR,
+    payload : true
+})
+
+//Colocar producto en edicion
+export function obtenerProductoEditar(producto){
+    return( dispatch ) => {
+        dispatch( obtenerProductoEditarAction(producto) )
+    }
+}
+
+const obtenerProductoEditarAction = (producto) => ({
+    type : OBTENER_PRODUCTO_EDITAR,
+    payload : producto
+})
+
+
+//Editar registro en la API y STATE
+export function editarProductoAction(producto){
+
+    return async ( dispatch ) => {
+        dispatch( editarProducto() );
+            
+        try {
+           const resultado =  await axios.put(`http://localhost:4000/productos/${id}`, producto);
+           console.log(resultado)
+        } catch (error) {
+            
+        }
+    }
+}
+
+const editarProducto = producto => ({
+    type : COMENZAR_EDICION_PRODUCTO,
+    payload : producto
 })

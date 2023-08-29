@@ -1,11 +1,6 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
-    },
-    {
       "id": 2,
       "nombre": "Jugo de Naranja",
       "precio": "1"
@@ -36,89 +31,9 @@
       "id": 7
     },
     {
-      "nombre": "test",
-      "precio": 3,
-      "id": 8
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 9
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 10
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 11
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 12
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 13
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 14
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 15
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 16
-    },
-    {
-      "nombre": "test",
-      "precio": 3,
-      "id": 17
-    },
-    {
       "nombre": "asdasd",
       "precio": 12,
       "id": 18
-    },
-    {
-      "nombre": "asdassadsaaaaaaaaaa",
-      "precio": 444,
-      "id": 19
-    },
-    {
-      "nombre": "ess",
-      "precio": 333,
-      "id": 20
-    },
-    {
-      "nombre": "qaa",
-      "precio": 333,
-      "id": 21
-    },
-    {
-      "nombre": "sad",
-      "precio": 3,
-      "id": 22
-    },
-    {
-      "nombre": "zxczc",
-      "precio": 22222,
-      "id": 23
-    },
-    {
-      "nombre": "ok",
-      "precio": 444,
-      "id": 24
     }
   ]
 }
