@@ -165,17 +165,26 @@ export function editarProductoAction(producto){
 
     return async ( dispatch ) => {
         dispatch( editarProducto() );
-            
         try {
-           const resultado =  await axios.put(`http://localhost:4000/productos/${id}`, producto);
-           console.log(resultado)
+            await axios.put(`http://localhost:4000/productos/${producto.id}`, producto);
+            dispatch( editarProductoExito(producto));
         } catch (error) {
-            
+            console.log(error)
+            dispatch( editarProductoError() )
         }
     }
 }
 
-const editarProducto = producto => ({
-    type : COMENZAR_EDICION_PRODUCTO,
+const editarProducto = () => ({
+    type : COMENZAR_EDICION_PRODUCTO
+})
+
+const editarProductoExito = ( producto ) => ({
+    tyoe : PRODUCTO_EDITADO_EXITO,
     payload : producto
+})
+
+const editarProductoError = () => ({
+    type : PRODUCTO_EDITADO_ERROR,
+    payload: true
 })

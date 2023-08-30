@@ -2,12 +2,12 @@
   "productos": [
     {
       "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
+      "nombre": "Jugo de Naranja Editado",
+      "precio": "152"
     },
     {
       "nombre": "Jugo de Naranja",
-      "precio": "300",
+      "precio": "301",
       "id": 3
     },
     {
@@ -19,21 +19,6 @@
       "nombre": "Jugo de Fresa",
       "precio": "200",
       "id": 5
-    },
-    {
-      "nombre": "test",
-      "precio": 2,
-      "id": 6
-    },
-    {
-      "nombre": "test",
-      "precio": 2,
-      "id": 7
-    },
-    {
-      "nombre": "asdasd",
-      "precio": 12,
-      "id": 18
     }
   ]
 }

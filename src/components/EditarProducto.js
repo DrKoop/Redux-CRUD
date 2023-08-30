@@ -1,8 +1,12 @@
 import React,{useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { editarProductoAction  } from '../actions/productoActions';
+import { useNavigate } from 'react-router';
 
 const EditarProducto = () => {
+
+    const history = useNavigate();
+    const dispatch = useDispatch();
 
     const [ producto , setProducto ] = useState({
         nombre : '',
@@ -23,13 +27,16 @@ const EditarProducto = () => {
         })
     }
 
+    if (!productoeditar) return null
 
-    const { nombre, precio, id } = producto;
+
+    const { nombre, precio } = producto;
 
     const submitEditarProducto = e => {
         e.preventDefault();
-        editarProductoAction()
-        
+        console.log(producto)
+        dispatch( editarProductoAction(producto) );
+        history('/');
     }
 
   return (

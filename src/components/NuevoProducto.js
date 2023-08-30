@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 //Actions
 import { crearNuevoProductoAction } from '../actions/productoActions'
+import { mostrarAlerta, ocultarAlertaAction } from '../actions/alertaActions'
 
 
 const NuevoProducto = ({  }) => {
@@ -21,6 +22,9 @@ const NuevoProducto = ({  }) => {
     
     const error = useSelector( state => state.productos.error );
 
+    //Sacando las Clases del reducer del ALERTA
+    const alerta = useSelector( state => state.alerta.alerta );
+
     const agregarProducto = producto => dispatch(crearNuevoProductoAction(producto));
 
     const submitNuevoProducto = e => {
@@ -28,10 +32,18 @@ const NuevoProducto = ({  }) => {
 
         //Validacion formulario
         if( nombre.trim() === '' || precio <= 0 ){
+
+            const alerta = {
+                msg : 'Ambos campos son Obligatorios',
+                classes : 'alert alert-danger text-center text-uppercase p-3'
+            }
+
+            dispatch( mostrarAlerta(alerta) );
             return;
         }
 
         //Verificar si existe algun error
+        dispatch( ocultarAlertaAction() )
 
         //Agregar un Nuevo Producto
         agregarProducto({
@@ -51,6 +63,7 @@ const NuevoProducto = ({  }) => {
                     <h2 className='text-center mb-4 font-weight-bold'>
                         Agregar Nuevo Producto
                     </h2>
+                    { alerta ? <p className={alerta.classes}>{alerta.msg}</p> : null }
                     <form
                         onSubmit={ submitNuevoProducto }
                     >
